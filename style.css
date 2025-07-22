@@ -435,27 +435,3 @@ nav {
   background-color: #555;
   transform: scale(1.1);
 }
-
-/* Sekcja O Mnie */
-.about-container {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-  gap: 2rem;
-  margin-top: 2rem;
-}
-.about-text {
-  flex: 1 1 50%;
-  font-size: 1.2rem;
-}
-.about-photo {
-  flex: 1 1 40%;
-  text-align: center;
-}
-.about-photo img {
-  max-width: 100%;
-  height: auto;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-}
