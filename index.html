@@ -10,6 +10,19 @@
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;family=Inter:wght@400;600&amp;display=swap" rel="stylesheet"/>
 </link><link href="lightbox/lightbox.min.css" rel="stylesheet">
+<style>
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadein 1s ease forwards;
+}
+@keyframes fadein {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+</style>
 </head>
 <body>
 <header>
@@ -22,7 +35,7 @@
 </header>
 <section id="about" class="section" style="padding: 80px 20px; background-color: #111; color: #fff;">
   <div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 60px;">
-    <div style="flex: 1 1 40%; min-width: 280px; max-width: 500px; text-align: left;">
+    <div class="fade-in" style="flex: 1 1 40%; min-width: 280px; max-width: 500px; text-align: left;">
       <h2 style="font-size: 64px; margin-bottom: 20px;">O Mnie</h2>
       <p style="font-size: 20px; line-height: 1.7;">
         Nazywam się Paweł Sumiła i pasjonuję się grafiką, rysunkiem oraz fotografią.<br><br>
@@ -36,7 +49,7 @@
       </p>
     </div>
     <div style="flex: 1 1 40%; min-width: 280px; max-width: 450px;">
-      <img src="images/about_me.jpg" alt="Paweł Sumiła" style="width: 100%; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.3);">
+      <img class="fade-in" src="images/about_me.jpg" alt="Paweł Sumiła" style="width: 100%; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.3);">
     </div>
   </div>
 </section>
