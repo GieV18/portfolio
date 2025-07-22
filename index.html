@@ -99,6 +99,8 @@
 
 
 
+
+
 <div id="lightbox" class="lightbox">
   <img id="lightbox-img" src="#" alt="Powiększone zdjęcie">
 </div>
@@ -114,6 +116,7 @@
         e.stopPropagation();
         lightbox.style.display = 'flex';
         lightboxImg.src = img.src;
+        lightbox.classList.add('visible');
         document.body.classList.add('lightbox-open');
       });
     });
@@ -121,6 +124,7 @@
     lightbox.addEventListener('click', () => {
       lightbox.style.display = 'none';
       lightboxImg.src = '#';
+      lightbox.classList.remove('visible');
       document.body.classList.remove('lightbox-open');
     });
   });
