@@ -202,14 +202,44 @@
 </script>
 
 <button id="scrollToTopBtn" title="Do góry">↑</button>
+
 <script>
-  const scrollBtn = document.getElementById("scrollToTopBtn");
-  window.onscroll = function () {
-    scrollBtn.style.display = (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) ? "flex" : "none";
-  };
-  scrollBtn.onclick = function () {
+const scrollBtn = document.getElementById("scrollToTopBtn");
+
+window.addEventListener("scroll", () => {
+    if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+        scrollBtn.classList.add("show");
+    } else {
+        scrollBtn.classList.remove("show");
+    }
+});
+
+scrollBtn.onclick = function () {
     window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
+};
 </script>
+
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const faders = document.querySelectorAll('.fade-in');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      } else {
+        entry.target.classList.remove('visible');
+      }
+    });
+  }, {
+    threshold: 0.1
+  });
+
+  faders.forEach(fader => {
+    observer.observe(fader);
+  });
+});
+</script>
+
 </body>
 </html>
