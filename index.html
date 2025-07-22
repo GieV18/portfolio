@@ -9,7 +9,8 @@
 <link href="style.css" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;family=Inter:wght@400;600&amp;display=swap" rel="stylesheet"/>
-</link></head>
+</link><link href="lightbox/lightbox.min.css" rel="stylesheet">
+</head>
 <body>
 <header>
 <h1>Paweł Sumiła</h1>
@@ -37,31 +38,11 @@
 <section class="fade-in" id="fotografia">
 <h2>Fotografia</h2>
 <div class="gallery">
-    <div class="photo-item fade-in">
-        <a href="images/fotografia1.jpg" data-lightbox="fotografia">
-            <img src="images/fotografia1.jpg" alt="Zdjęcie z kategorii fotografia">
-        </a>
-    </div>
-    <div class="photo-item fade-in">
-        <a href="images/fotografia2.jpg" data-lightbox="fotografia">
-            <img src="images/fotografia2.jpg" alt="Zdjęcie z kategorii fotografia">
-        </a>
-    </div>
-    <div class="photo-item fade-in">
-        <a href="images/fotografia3.jpg" data-lightbox="fotografia">
-            <img src="images/fotografia3.jpg" alt="Zdjęcie z kategorii fotografia">
-        </a>
-   </div>
-    <div class="photo-item fade-in">
-        <a href="images/fotografia4.jpg" data-lightbox="fotografia">
-            <img src="images/fotografia4.jpg" alt="Zdjęcie z kategorii fotografia">
-        </a>
-   </div>
-    <div class="photo-item fade-in">
-        <a href="images/fotografia5.jpg" data-lightbox="fotografia">
-            <img src="images/fotografia5.jpg" alt="Zdjęcie z kategorii fotografia">
-        </a>
-    </div>
+<img alt="Fotografia 1" src="images/fotografia1.jpg"/>
+<img alt="Fotografia 2" src="images/fotografia2.jpg"/>
+<img alt="Fotografia 3" src="images/fotografia3.jpg"/>
+<img alt="Fotografia 4" src="images/fotografia4.jpg"/>
+<img alt="Fotografia 5" src="images/fotografia5.jpg"/>
 </div>
 </section>
 <section class="fade-in" id="kontakt">
@@ -286,6 +267,18 @@ window.addEventListener("scroll", () => {
 scrollBtn.onclick = function () {
     window.scrollTo({ top: 0, behavior: 'smooth' });
 };
+</script>
+
+<script src="lightbox/lightbox.min.js"></script>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    document.querySelectorAll('a[data-lightbox]').forEach(function(link) {
+      link.addEventListener("click", function(e) {
+        e.preventDefault(); // zablokuj otwieranie nowej karty
+      });
+    });
+  });
 </script>
 
 </body>
