@@ -396,33 +396,21 @@ nav a:hover {
   color: #ccc;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
 nav {
   position: sticky;
   top: 0;
   z-index: 1000;
+  padding: 10px 0;
   background: rgba(0, 0, 0, 0.5);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-  padding: 10px 0;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
 }
 
 #scrollToTopBtn {
   position: fixed;
-  bottom: 24px;
-  right: 24px;
+  bottom: 20px;
+  right: 20px;
   width: 48px;
   height: 48px;
   background-color: #333;
@@ -437,16 +425,12 @@ nav {
   align-items: center;
   opacity: 0;
   visibility: hidden;
-  line-height: 1;
-  transition: opacity 0.4s ease, visibility 0.4s ease, transform 0.3s ease;
-  box-sizing: border-box;
+  transition: opacity 0.4s ease, visibility 0.4s ease, transform 0.2s ease;
 }
-
 #scrollToTopBtn.show {
   opacity: 1;
   visibility: visible;
 }
-
 #scrollToTopBtn:hover {
   background-color: #555;
   transform: scale(1.1);
