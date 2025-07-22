@@ -203,3 +203,36 @@ h1, h2 {
   object-fit: contain;
   background: white;
 }
+
+
+/* Lightbox poprawiony */
+.lightbox {
+  position: fixed;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.95);
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 9999;
+}
+
+.lightbox img {
+  max-width: 90vw;
+  max-height: 90vh;
+  width: auto;
+  height: auto;
+  margin: auto;
+  display: block;
+  border-radius: 8px;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+  background: white;
+  object-fit: contain;
+}
+
+/* Zapobiega przewijaniu strony pod spodem */
+body.lightbox-open {
+  overflow: hidden;
+}
