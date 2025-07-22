@@ -1,17 +1,17 @@
+
+@font-face {
+  font-family: 'Bebas Neue';
+  src: url('fonts/BebasNeue-Regular.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
 body {
-  font-family: 'Bebas Neue', sans-serif;
+  font-family: 'Inter', sans-serif;
   margin: 0;
   font-family: 'Segoe UI', sans-serif;
   background: #f4f4f4;
   color: #333;
-}
-
-@font-face {
-  font-family: "BebasNeue-Regular";
-  src: url("css/fonts/BebasNeue-Regular.eot");
-  src: url("css/fonts/BebasNeue-Regular.woff") format("woff"),
-       url("css/fonts/BebasNeue-Regular.otf") format("opentype"),
-       url("css/fonts/some-font.svg#filename") format("svg");
 }
 
 header {
@@ -158,5 +158,19 @@ footer .socials img:hover {
 
 h1, h2 {
   font-weight: bold;
+  letter-spacing: 0.5px;
+}
+
+
+h1, h2 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-weight: 400;
+  letter-spacing: 0.5px;
+}
+
+
+h1, h2 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-weight: normal;
   letter-spacing: 0.5px;
 }
