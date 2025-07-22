@@ -23,6 +23,18 @@
 }
 
 
+
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
 .fade-in {
   opacity: 0;
   transform: translateY(20px);
@@ -61,7 +73,7 @@
       </p>
     </div>
     <div style="flex: 1 1 40%; min-width: 280px; max-width: 450px;">
-      <img class="fade-in" src="images/about_me.jpg" alt="Paweł Sumiła" style="width: 100%; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.3);">
+      <img class="fade-in fade-in" src="images/about_me.jpg" alt="Paweł Sumiła" style="width: 100%; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.3);">
     </div>
   </div>
 </section>
@@ -70,25 +82,25 @@
 <section class="fade-in" id="projekty">
 <h2>Design</h2>
 <div class="gallery">
-<img alt="Projekt 1" src="images/projekty1.jpg"/>
-<img alt="Projekt 2" src="images/projekty2.jpg"/>
-<img alt="Projekt 3" src="images/projekty3.jpg"/>
+<img class="fade-in" alt="Projekt 1" src="images/projekty1.jpg"/>
+<img class="fade-in" alt="Projekt 2" src="images/projekty2.jpg"/>
+<img class="fade-in" alt="Projekt 3" src="images/projekty3.jpg"/>
 </div>
 </section>
 <section class="fade-in" id="portrety">
 <h2>Portrety</h2>
 <div class="gallery">
-<img alt="Portret 1" src="images/portrety1.jpg"/>
+<img class="fade-in" alt="Portret 1" src="images/portrety1.jpg"/>
 </div>
 </section>
 <section class="fade-in" id="fotografia">
 <h2>Fotografia</h2>
 <div class="gallery">
-<img alt="Fotografia 1" src="images/fotografia1.jpg"/>
-<img alt="Fotografia 2" src="images/fotografia2.jpg"/>
-<img alt="Fotografia 3" src="images/fotografia3.jpg"/>
-<img alt="Fotografia 4" src="images/fotografia4.jpg"/>
-<img alt="Fotografia 5" src="images/fotografia5.jpg"/>
+<img class="fade-in" alt="Fotografia 1" src="images/fotografia1.jpg"/>
+<img class="fade-in" alt="Fotografia 2" src="images/fotografia2.jpg"/>
+<img class="fade-in" alt="Fotografia 3" src="images/fotografia3.jpg"/>
+<img class="fade-in" alt="Fotografia 4" src="images/fotografia4.jpg"/>
+<img class="fade-in" alt="Fotografia 5" src="images/fotografia5.jpg"/>
 </div>
 </section>
 <section class="fade-in" id="kontakt">
@@ -133,7 +145,7 @@
 </script>
 <div class="lightbox" id="lightbox">
 <button class="lightbox-btn" id="prevBtn">❮</button>
-<img alt="Powiększone zdjęcie" id="lightbox-img" src="#"/>
+<img class="fade-in" alt="Powiększone zdjęcie" id="lightbox-img" src="#"/>
 <button class="lightbox-btn" id="nextBtn">❯</button>
 <div id="slideCounter">1 / 1</div>
 </div>
