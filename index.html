@@ -9,27 +9,7 @@
 <link href="style.css" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;family=Inter:wght@400;600&amp;display=swap" rel="stylesheet"/>
-</link>
-<style>
-@keyframes fadeInSmooth {
-  0% { opacity: 0; transform: scale(0.9); }
-  100% { opacity: 1; transform: scale(1); }
-}
-@keyframes fadeOutSmooth {
-  0% { opacity: 1; transform: scale(1); }
-  100% { opacity: 0; transform: scale(0.9); }
-}
-#scrollToTopBtn.show {
-  animation: fadeInSmooth 0.6s ease forwards;
-  visibility: visible;
-}
-#scrollToTopBtn.hide {
-  animation: fadeOutSmooth 0.6s ease forwards;
-  visibility: hidden;
-}
-</style>
-
-</head>
+</link></head>
 <body>
 <header>
 <h1>Paweł Sumiła</h1>
@@ -86,28 +66,202 @@
 </a>
 </div>
 </footer>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const elements = document.querySelectorAll(".fade-in");
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+        }
+      });
+    }, { threshold: 0.1 });
 
+    elements.forEach(el => observer.observe(el));
+  });
+</script>
+<div class="lightbox" id="lightbox">
+<button class="lightbox-btn" id="prevBtn">❮</button>
+<img alt="Powiększone zdjęcie" id="lightbox-img" src="#"/>
+<button class="lightbox-btn" id="nextBtn">❯</button>
+<div id="slideCounter">1 / 1</div>
+</div>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const galleryImages = document.querySelectorAll('.gallery img');
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    const slideCounter = document.getElementById('slideCounter');
+    let currentIndex = 0;
 
+    const updateImage = () => {
+      lightboxImg.classList.remove('lightbox-fade');
+      void lightboxImg.offsetWidth;
+      lightboxImg.classList.add('lightbox-fade');
+      lightboxImg.src = galleryImages[currentIndex].src;
+      slideCounter.textContent = (currentIndex + 1) + ' / ' + galleryImages.length;
+    };
 
+    const openLightbox = (index) => {
+      currentIndex = index;
+      updateImage();
+      lightbox.style.display = 'flex';
+      lightbox.classList.add('visible');
+      document.body.classList.add('lightbox-open');
+    };
+
+    const closeLightbox = () => {
+      lightbox.style.display = 'none';
+      lightboxImg.src = '#';
+      lightbox.classList.remove('visible');
+      document.body.classList.remove('lightbox-open');
+    };
+
+    galleryImages.forEach((img, index) => {
+      img.dataset.index = index;
+      img.addEventListener('click', e => {
+        e.stopPropagation();
+        openLightbox(index);
+      });
+    });
+
+    prevBtn.addEventListener('click', e => {
+      e.stopPropagation();
+      currentIndex = (currentIndex - 1 + galleryImages.length) % galleryImages.length;
+      updateImage();
+    });
+
+    nextBtn.addEventListener('click', e => {
+      e.stopPropagation();
+      currentIndex = (currentIndex + 1) % galleryImages.length;
+      updateImage();
+    });
+
+    lightbox.addEventListener('click', () => {
+      closeLightbox();
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        closeLightbox();
+      }
+    });
+  });
+</script>
+<button id="scrollTopBtn" title="Do góry">↑</button>
+<script>
+  const scrollTopBtn = document.getElementById("scrollTopBtn");
+
+  const toggleScrollBtn = () => {
+    try {
+      const scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
+      if (scrollTop > 300) {
+        scrollTopBtn.style.display = "block";
+      } else {
+        scrollTopBtn.style.display = "none";
+      }
+    } catch (e) {
+      scrollTopBtn.style.display = "block"; // awaryjne wyświetlenie
+    }
+  };
+
+  window.addEventListener('scroll', toggleScrollBtn);
+  document.addEventListener('DOMContentLoaded', toggleScrollBtn);
+
+  scrollTopBtn.onclick = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+</script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const sections = document.querySelectorAll('section');
+    const navLinks = document.querySelectorAll('nav a');
+
+    const activateLink = () => {
+      let current = '';
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop - 100;
+        if (scrollY >= sectionTop) {
+          current = section.getAttribute('id');
+        }
+      });
+
+      navLinks.forEach(link => {
+        link.classList.remove('active-link');
+        if (link.getAttribute('href').includes(current)) {
+          link.classList.add('active-link');
+        }
+      });
+    };
+
+    window.addEventListener('scroll', activateLink);
+    activateLink(); // Run on load
+  });
+</script>
 
 
 
 <script>
-const scrollToTopBtn = document.getElementById("scrollToTopBtn");
+const scrollBtn = document.getElementById("scrollToTopBtn");
 
 window.addEventListener("scroll", () => {
-  if (window.scrollY > 300) {
-    scrollToTopBtn.classList.remove("hide");
-    scrollToTopBtn.classList.add("show");
-  } else {
-    scrollToTopBtn.classList.remove("show");
-    scrollToTopBtn.classList.add("hide");
-  }
+    if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+        scrollBtn.classList.add("show");
+    } else {
+        scrollBtn.classList.remove("show");
+    }
 });
 
-scrollToTopBtn.addEventListener("click", () => {
-  window.scrollTo({ top: 0, behavior: "smooth" });
+scrollBtn.onclick = function () {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+};
+</script>
+
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const faders = document.querySelectorAll('.fade-in');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      } else {
+        entry.target.classList.remove('visible');
+      }
+    });
+  }, {
+    threshold: 0.1
+  });
+
+  faders.forEach(fader => {
+    observer.observe(fader);
+  });
 });
+</script>
+
+
+
+
+
+<button id="scrollToTopBtn" title="Wróć na górę">↑</button>
+
+
+<script>
+const scrollBtn = document.getElementById("scrollToTopBtn");
+
+window.addEventListener("scroll", () => {
+    if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+        scrollBtn.classList.add("show");
+    } else {
+        scrollBtn.classList.remove("show");
+    }
+});
+
+scrollBtn.onclick = function () {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+};
 </script>
 
 </body>
