@@ -101,8 +101,17 @@
 
 
 
+
+
+
+
+
+
 <div id="lightbox" class="lightbox">
+  <button id="prevBtn" class="lightbox-btn">&#10094;</button>
   <img id="lightbox-img" src="#" alt="Powiększone zdjęcie">
+  <button id="nextBtn" class="lightbox-btn">&#10095;</button>
+  <div id="slideCounter">1 / 1</div>
 </div>
 
 <script>
@@ -110,22 +119,62 @@
     const galleryImages = document.querySelectorAll('.gallery img');
     const lightbox = document.getElementById('lightbox');
     const lightboxImg = document.getElementById('lightbox-img');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    const slideCounter = document.getElementById('slideCounter');
+    let currentIndex = 0;
 
-    galleryImages.forEach(img => {
-      img.addEventListener('click', e => {
-        e.stopPropagation();
-        lightbox.style.display = 'flex';
-        lightboxImg.src = img.src;
-        lightbox.classList.add('visible');
-        document.body.classList.add('lightbox-open');
-      });
-    });
+    const updateImage = () => {
+      lightboxImg.classList.remove('lightbox-fade');
+      void lightboxImg.offsetWidth;
+      lightboxImg.classList.add('lightbox-fade');
+      lightboxImg.src = galleryImages[currentIndex].src;
+      slideCounter.textContent = (currentIndex + 1) + ' / ' + galleryImages.length;
+    };
 
-    lightbox.addEventListener('click', () => {
+    const openLightbox = (index) => {
+      currentIndex = index;
+      updateImage();
+      lightbox.style.display = 'flex';
+      lightbox.classList.add('visible');
+      document.body.classList.add('lightbox-open');
+    };
+
+    const closeLightbox = () => {
       lightbox.style.display = 'none';
       lightboxImg.src = '#';
       lightbox.classList.remove('visible');
       document.body.classList.remove('lightbox-open');
+    };
+
+    galleryImages.forEach((img, index) => {
+      img.dataset.index = index;
+      img.addEventListener('click', e => {
+        e.stopPropagation();
+        openLightbox(index);
+      });
+    });
+
+    prevBtn.addEventListener('click', e => {
+      e.stopPropagation();
+      currentIndex = (currentIndex - 1 + galleryImages.length) % galleryImages.length;
+      updateImage();
+    });
+
+    nextBtn.addEventListener('click', e => {
+      e.stopPropagation();
+      currentIndex = (currentIndex + 1) % galleryImages.length;
+      updateImage();
+    });
+
+    lightbox.addEventListener('click', () => {
+      closeLightbox();
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        closeLightbox();
+      }
     });
   });
 </script>
