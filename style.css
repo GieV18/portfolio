@@ -174,3 +174,8 @@ h1, h2 {
   font-weight: normal;
   letter-spacing: 0.5px;
 }
+
+
+h1, h2 {
+  text-align: center;
+}
