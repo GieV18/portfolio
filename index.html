@@ -1,87 +1,71 @@
 <!DOCTYPE html>
+
 <html lang="pl">
 <head>
-    <link rel="icon" href="favicon.png" type="image/png">
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Paweł Sumiła</title>
-  <link rel="stylesheet" href="style.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
-
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;600&display=swap" rel="stylesheet">
-
-</head>
+<link href="favicon.png" rel="icon" type="image/png"/>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Paweł Sumiła</title>
+<link href="style.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;family=Inter:wght@400;600&amp;display=swap" rel="stylesheet"/>
+</link></head>
 <body>
-
 <header>
-  <h1>Paweł Sumiła</h1>
-  <nav>
-    <a href="#projekty">Design</a>
-    <a href="#portrety">Portrety</a>
-    <a href="#fotografia">Fotografia</a>
-  </nav>
+<h1>Paweł Sumiła</h1>
+<nav>
+<a href="#projekty">Design</a>
+<a href="#portrety">Portrety</a>
+<a href="#fotografia">Fotografia</a>
+</nav>
 </header>
-
 <main>
-  <section id="projekty" class="fade-in">
-    <h2>Design</h2>
-    <div class="gallery">
-      <img src="images/projekty1.jpg" alt="Projekt 1">
-      <img src="images/projekty2.jpg" alt="Projekt 2">
-      <img src="images/projekty3.jpg" alt="Projekt 3">
-    </div>
-  </section>
-
-  <section id="portrety" class="fade-in">
-    <h2>Portrety</h2>
-    <div class="gallery">
-      <img src="images/portrety1.jpg" alt="Portret 1">
-    </div>
-  </section>
-
-  <section id="fotografia" class="fade-in">
-    <h2>Fotografia</h2>
-    <div class="gallery">
-      <img src="images/fotografia1.jpg" alt="Fotografia 1">
-    </div>
-  </section>
-
-<section id="kontakt" class="fade-in">
-  <h2>Skontaktuj się ze mną</h2>
-  <form action="https://formspree.io/f/your-form-id" method="POST" class="contact-form">
-    <label for="name">Imię:</label>
-    <input type="text" id="name" name="name" required>
-
-    <label for="email">Adres e-mail:</label>
-    <input type="email" id="email" name="_replyto" required>
-
-    <label for="message">Wiadomość:</label>
-    <textarea id="message" name="message" rows="5" required></textarea>
-
-    <button type="submit">Wyślij</button>
-  </form>
+<section class="fade-in" id="projekty">
+<h2>Design</h2>
+<div class="gallery">
+<img alt="Projekt 1" src="images/projekty1.jpg"/>
+<img alt="Projekt 2" src="images/projekty2.jpg"/>
+<img alt="Projekt 3" src="images/projekty3.jpg"/>
+</div>
 </section>
-
+<section class="fade-in" id="portrety">
+<h2>Portrety</h2>
+<div class="gallery">
+<img alt="Portret 1" src="images/portrety1.jpg"/>
+</div>
+</section>
+<section class="fade-in" id="fotografia">
+<h2>Fotografia</h2>
+<div class="gallery">
+<img alt="Fotografia 1" src="images/fotografia1.jpg"/>
+</div>
+</section>
+<section class="fade-in" id="kontakt">
+<h2>Skontaktuj się ze mną</h2>
+<form action="https://formspree.io/f/your-form-id" class="contact-form" method="POST">
+<label for="name">Imię:</label>
+<input id="name" name="name" required="" type="text"/>
+<label for="email">Adres e-mail:</label>
+<input id="email" name="_replyto" required="" type="email"/>
+<label for="message">Wiadomość:</label>
+<textarea id="message" name="message" required="" rows="5"></textarea>
+<button type="submit">Wyślij</button>
+</form>
+</section>
 </main>
-
 <footer>
   © 2025 Paweł Sumiła – Portfolio
 
   
 <div class="socials">
-  <a href="https://www.instagram.com/_fomes_photography?igsh=M2xoamRreHB1anRr&utm_source=qr" target="_blank" aria-label="Instagram">
-    <img src="images/instagram_custom.png" alt="Instagram Icon">
-  </a>
-
-    <a href="https://www.facebook.com/GieV18" target="_blank" aria-label="Facebook">
-      <img src="images/facebook.png" alt="Facebook Icon">
-    </a>
+<a aria-label="Instagram" href="https://www.instagram.com/_fomes_photography?igsh=M2xoamRreHB1anRr&amp;utm_source=qr" target="_blank">
+<img alt="Instagram Icon" src="images/instagram_custom.png"/>
+</a>
+<a aria-label="Facebook" href="https://www.facebook.com/GieV18" target="_blank">
+<img alt="Facebook Icon" src="images/facebook.png"/>
+</a>
 </div>
-
-
 </footer>
-
-
 <script>
   document.addEventListener("DOMContentLoaded", function () {
     const elements = document.querySelectorAll(".fade-in");
@@ -96,25 +80,12 @@
     elements.forEach(el => observer.observe(el));
   });
 </script>
-
-
-
-
-
-
-
-
-
-
-
-
-<div id="lightbox" class="lightbox">
-  <button id="prevBtn" class="lightbox-btn">&#10094;</button>
-  <img id="lightbox-img" src="#" alt="Powiększone zdjęcie">
-  <button id="nextBtn" class="lightbox-btn">&#10095;</button>
-  <div id="slideCounter">1 / 1</div>
+<div class="lightbox" id="lightbox">
+<button class="lightbox-btn" id="prevBtn">❮</button>
+<img alt="Powiększone zdjęcie" id="lightbox-img" src="#"/>
+<button class="lightbox-btn" id="nextBtn">❯</button>
+<div id="slideCounter">1 / 1</div>
 </div>
-
 <script>
   document.addEventListener('DOMContentLoaded', () => {
     const galleryImages = document.querySelectorAll('.gallery img');
@@ -179,11 +150,7 @@
     });
   });
 </script>
-
-
-<button id="scrollTopBtn" title="Do góry">&#8593;</button>
-
-
+<button id="scrollTopBtn" title="Do góry">↑</button>
 <script>
   const scrollTopBtn = document.getElementById("scrollTopBtn");
 
@@ -207,9 +174,6 @@
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 </script>
-
-
-
 <script>
   document.addEventListener('DOMContentLoaded', () => {
     const sections = document.querySelectorAll('section');
@@ -237,5 +201,15 @@
   });
 </script>
 
+<button id="scrollToTopBtn" title="Do góry">↑</button>
+<script>
+  const scrollBtn = document.getElementById("scrollToTopBtn");
+  window.onscroll = function () {
+    scrollBtn.style.display = (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) ? "flex" : "none";
+  };
+  scrollBtn.onclick = function () {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+</script>
 </body>
 </html>
