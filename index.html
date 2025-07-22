@@ -201,7 +201,7 @@
   });
 </script>
 
-<button id="scrollToTopBtn" title="Do góry">↑</button>
+
 
 <script>
 const scrollBtn = document.getElementById("scrollToTopBtn");
@@ -239,6 +239,29 @@ document.addEventListener("DOMContentLoaded", () => {
     observer.observe(fader);
   });
 });
+</script>
+
+
+
+
+
+<button id="scrollToTopBtn" title="Wróć na górę">↑</button>
+
+
+<script>
+const scrollBtn = document.getElementById("scrollToTopBtn");
+
+window.addEventListener("scroll", () => {
+    if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+        scrollBtn.classList.add("show");
+    } else {
+        scrollBtn.classList.remove("show");
+    }
+});
+
+scrollBtn.onclick = function () {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+};
 </script>
 
 </body>
