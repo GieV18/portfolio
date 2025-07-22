@@ -79,3 +79,35 @@ footer {
   opacity: 1;
   transform: translateY(0);
 }
+
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  max-width: 600px;
+  margin: 2em auto;
+}
+
+.contact-form input,
+.contact-form textarea {
+  padding: 0.8em;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1em;
+}
+
+.contact-form button {
+  padding: 0.8em;
+  border: none;
+  background-color: #111;
+  color: white;
+  font-weight: bold;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.contact-form button:hover {
+  background-color: #444;
+}
