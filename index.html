@@ -18,7 +18,7 @@
 </header>
 
 <main>
-  <section id="projekty">
+  <section id="projekty" class="fade-in">
     <h2>🎨 Design</h2>
     <div class="gallery">
       <img src="images/projekty1.jpg" alt="Projekt 1">
@@ -27,14 +27,14 @@
     </div>
   </section>
 
-  <section id="portrety">
+  <section id="portrety" class="fade-in">
     <h2>🧑‍🎨 Portrety</h2>
     <div class="gallery">
       <img src="images/portrety1.jpg" alt="Portret 1">
     </div>
   </section>
 
-  <section id="fotografia">
+  <section id="fotografia" class="fade-in">
     <h2>📷 Fotografia</h2>
     <div class="gallery">
       <img src="images/fotografia1.jpg" alt="Fotografia 1">
@@ -43,8 +43,24 @@
 </main>
 
 <footer>
-  © 2025 Twoje Imię – portfolio
+  © 2025 Paweł Sumiła – Portfolio
 </footer>
+
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const elements = document.querySelectorAll(".fade-in");
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+        }
+      });
+    }, { threshold: 0.1 });
+
+    elements.forEach(el => observer.observe(el));
+  });
+</script>
 
 </body>
 </html>
