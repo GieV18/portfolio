@@ -10,40 +10,6 @@
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;family=Inter:wght@400;600&amp;display=swap" rel="stylesheet"/>
 </link><link href="lightbox/lightbox.min.css" rel="stylesheet">
-<style>
-
-.fade-in {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 0.8s ease, transform 0.8s ease;
-}
-
-
-
-
-
-
-
-@keyframes fadein {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-</style>
-
-<style>
-.fade-in {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 1s ease-out, transform 1s ease-out;
-}
-.fade-in.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-</style>
-
 </head>
 <body>
 <header>
@@ -56,7 +22,7 @@
 </header>
 <section id="about" class="section" style="padding: 80px 20px; background-color: #111; color: #fff;">
   <div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 60px;">
-    <div class="fade-in" style="flex: 1 1 40%; min-width: 280px; max-width: 500px; text-align: left;">
+    <div style="flex: 1 1 40%; min-width: 280px; max-width: 500px; text-align: left;">
       <h2 style="font-size: 64px; margin-bottom: 20px;">O Mnie</h2>
       <p style="font-size: 20px; line-height: 1.7;">
         Nazywam się Paweł Sumiła i pasjonuję się grafiką, rysunkiem oraz fotografią.<br><br>
@@ -70,7 +36,7 @@
       </p>
     </div>
     <div style="flex: 1 1 40%; min-width: 280px; max-width: 450px;">
-      <img onclick="openLightbox(this.src)" class="fade-in fade-in" src="images/about_me.jpg" alt="Paweł Sumiła" style="width: 100%; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.3);">
+      <img src="images/about_me.jpg" alt="Paweł Sumiła" style="width: 100%; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.3);">
     </div>
   </div>
 </section>
@@ -79,25 +45,25 @@
 <section class="fade-in" id="projekty">
 <h2>Design</h2>
 <div class="gallery">
-<img onclick="openLightbox(this.src)" class="fade-in" alt="Projekt 1" src="images/projekty1.jpg"/>
-<img onclick="openLightbox(this.src)" class="fade-in" alt="Projekt 2" src="images/projekty2.jpg"/>
-<img onclick="openLightbox(this.src)" class="fade-in" alt="Projekt 3" src="images/projekty3.jpg"/>
+<img alt="Projekt 1" src="images/projekty1.jpg"/>
+<img alt="Projekt 2" src="images/projekty2.jpg"/>
+<img alt="Projekt 3" src="images/projekty3.jpg"/>
 </div>
 </section>
 <section class="fade-in" id="portrety">
 <h2>Portrety</h2>
 <div class="gallery">
-<img onclick="openLightbox(this.src)" class="fade-in" alt="Portret 1" src="images/portrety1.jpg"/>
+<img alt="Portret 1" src="images/portrety1.jpg"/>
 </div>
 </section>
 <section class="fade-in" id="fotografia">
 <h2>Fotografia</h2>
 <div class="gallery">
-<img onclick="openLightbox(this.src)" class="fade-in" alt="Fotografia 1" src="images/fotografia1.jpg"/>
-<img onclick="openLightbox(this.src)" class="fade-in" alt="Fotografia 2" src="images/fotografia2.jpg"/>
-<img onclick="openLightbox(this.src)" class="fade-in" alt="Fotografia 3" src="images/fotografia3.jpg"/>
-<img onclick="openLightbox(this.src)" class="fade-in" alt="Fotografia 4" src="images/fotografia4.jpg"/>
-<img onclick="openLightbox(this.src)" class="fade-in" alt="Fotografia 5" src="images/fotografia5.jpg"/>
+<img alt="Fotografia 1" src="images/fotografia1.jpg"/>
+<img alt="Fotografia 2" src="images/fotografia2.jpg"/>
+<img alt="Fotografia 3" src="images/fotografia3.jpg"/>
+<img alt="Fotografia 4" src="images/fotografia4.jpg"/>
+<img alt="Fotografia 5" src="images/fotografia5.jpg"/>
 </div>
 </section>
 <section class="fade-in" id="kontakt">
@@ -126,14 +92,90 @@
 </a>
 </div>
 </footer>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const elements = document.querySelectorAll(".fade-in");
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+        }
+      });
+    }, { threshold: 0.1 });
 
+    elements.forEach(el => observer.observe(el));
+  });
+</script>
 <div class="lightbox" id="lightbox">
 <button class="lightbox-btn" id="prevBtn">❮</button>
-<img onclick="openLightbox(this.src)" class="fade-in" alt="Powiększone zdjęcie" id="lightbox-img" src="#"/>
+<img alt="Powiększone zdjęcie" id="lightbox-img" src="#"/>
 <button class="lightbox-btn" id="nextBtn">❯</button>
 <div id="slideCounter">1 / 1</div>
 </div>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const galleryImages = document.querySelectorAll('.gallery img');
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    const slideCounter = document.getElementById('slideCounter');
+    let currentIndex = 0;
 
+    const updateImage = () => {
+      lightboxImg.classList.remove('lightbox-fade');
+      void lightboxImg.offsetWidth;
+      lightboxImg.classList.add('lightbox-fade');
+      lightboxImg.src = galleryImages[currentIndex].src;
+      slideCounter.textContent = (currentIndex + 1) + ' / ' + galleryImages.length;
+    };
+
+    const openLightbox = (index) => {
+      currentIndex = index;
+      updateImage();
+      lightbox.style.display = 'flex';
+      lightbox.classList.add('visible');
+      document.body.classList.add('lightbox-open');
+    };
+
+    const closeLightbox = () => {
+      lightbox.style.display = 'none';
+      lightboxImg.src = '#';
+      lightbox.classList.remove('visible');
+      document.body.classList.remove('lightbox-open');
+    };
+
+    galleryImages.forEach((img, index) => {
+      img.dataset.index = index;
+      img.addEventListener('click', e => {
+        e.stopPropagation();
+        openLightbox(index);
+      });
+    });
+
+    prevBtn.addEventListener('click', e => {
+      e.stopPropagation();
+      currentIndex = (currentIndex - 1 + galleryImages.length) % galleryImages.length;
+      updateImage();
+    });
+
+    nextBtn.addEventListener('click', e => {
+      e.stopPropagation();
+      currentIndex = (currentIndex + 1) % galleryImages.length;
+      updateImage();
+    });
+
+    lightbox.addEventListener('click', () => {
+      closeLightbox();
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        closeLightbox();
+      }
+    });
+  });
+</script>
 <button id="scrollTopBtn" title="Do góry">↑</button>
 <script>
   const scrollTopBtn = document.getElementById("scrollTopBtn");
@@ -158,7 +200,32 @@
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 </script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const sections = document.querySelectorAll('section');
+    const navLinks = document.querySelectorAll('nav a');
 
+    const activateLink = () => {
+      let current = '';
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop - 100;
+        if (scrollY >= sectionTop) {
+          current = section.getAttribute('id');
+        }
+      });
+
+      navLinks.forEach(link => {
+        link.classList.remove('active-link');
+        if (link.getAttribute('href').includes(current)) {
+          link.classList.add('active-link');
+        }
+      });
+    };
+
+    window.addEventListener('scroll', activateLink);
+    activateLink(); // Run on load
+  });
+</script>
 
 
 
@@ -179,7 +246,26 @@ scrollBtn.onclick = function () {
 </script>
 
 
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const faders = document.querySelectorAll('.fade-in');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      } else {
+        entry.target.classList.remove('visible');
+      }
+    });
+  }, {
+    threshold: 0.1
+  });
 
+  faders.forEach(fader => {
+    observer.observe(fader);
+  });
+});
+</script>
 
 
 
@@ -206,27 +292,14 @@ scrollBtn.onclick = function () {
 
 <script src="lightbox/lightbox.min.js"></script>
 
-
-
-
 <script>
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-      } else {
-        entry.target.classList.remove('visible');
-      }
-    });
-  }, { threshold: 0.1 });
-
-  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
-          entry.target.classList.remove('visible');
-        }
+  document.addEventListener("DOMContentLoaded", function () {
+    document.querySelectorAll('a[data-lightbox]').forEach(function(link) {
+      link.addEventListener("click", function(e) {
+        e.preventDefault(); // zablokuj otwieranie nowej karty
       });
-    }, { threshold: 0.1 });
-
-    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+    });
+  });
 </script>
 
 </body>
