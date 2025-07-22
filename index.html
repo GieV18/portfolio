@@ -25,23 +25,23 @@
   <section id="projekty" class="fade-in">
     <h2>Design</h2>
     <div class="gallery">
-      <a href="images/projekty1.jpg" target="_blank"><img src="images/projekty1.jpg" alt="Projekt 1"></a>
-      <a href="images/projekty2.jpg" target="_blank"><img src="images/projekty2.jpg" alt="Projekt 2"></a>
-      <a href="images/projekty3.jpg" target="_blank"><img src="images/projekty3.jpg" alt="Projekt 3"></a>
+      <img src="images/projekty1.jpg" alt="Projekt 1">
+      <img src="images/projekty2.jpg" alt="Projekt 2">
+      <img src="images/projekty3.jpg" alt="Projekt 3">
     </div>
   </section>
 
   <section id="portrety" class="fade-in">
     <h2>Portrety</h2>
     <div class="gallery">
-      <a href="images/portrety1.jpg" target="_blank"><img src="images/portrety1.jpg" alt="Portret 1"></a>
+      <img src="images/portrety1.jpg" alt="Portret 1">
     </div>
   </section>
 
   <section id="fotografia" class="fade-in">
     <h2>Fotografia</h2>
     <div class="gallery">
-      <a href="images/fotografia1.jpg" target="_blank"><img src="images/fotografia1.jpg" alt="Fotografia 1"></a>
+      <img src="images/fotografia1.jpg" alt="Fotografia 1">
     </div>
   </section>
 
@@ -69,11 +69,11 @@
   
 <div class="socials">
   <a href="https://www.instagram.com/_fomes_photography?igsh=M2xoamRreHB1anRr&utm_source=qr" target="_blank" aria-label="Instagram">
-    <a href="images/instagram_custom.png" target="_blank"><img src="images/instagram_custom.png" alt="Instagram Icon"></a>
+    <img src="images/instagram_custom.png" alt="Instagram Icon">
   </a>
 
     <a href="https://www.facebook.com/GieV18" target="_blank" aria-label="Facebook">
-      <a href="images/facebook.png" target="_blank"><img src="images/facebook.png" alt="Facebook Icon"></a>
+      <img src="images/facebook.png" alt="Facebook Icon">
     </a>
 </div>
 
@@ -93,6 +93,32 @@
     }, { threshold: 0.1 });
 
     elements.forEach(el => observer.observe(el));
+  });
+</script>
+
+
+<div id="lightbox" class="lightbox" onclick="this.style.display='none'">
+  <img id="lightbox-img" src="#" alt="Powiększone zdjęcie">
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const galleryImages = document.querySelectorAll('.gallery img');
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+
+    galleryImages.forEach(img => {
+      img.addEventListener('click', e => {
+        lightbox.style.display = 'flex';
+        lightboxImg.src = img.src;
+        e.stopPropagation();
+      });
+    });
+
+    lightbox.addEventListener('click', () => {
+      lightbox.style.display = 'none';
+      lightboxImg.src = '#';
+    });
   });
 </script>
 
