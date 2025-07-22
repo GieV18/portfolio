@@ -6,6 +6,14 @@ body {
   color: #333;
 }
 
+@font-face {
+  font-family: "BebasNeue-Regular";
+  src: url("css/fonts/BebasNeue-Regular.eot");
+  src: url("css/fonts/BebasNeue-Regular.woff") format("woff"),
+       url("css/fonts/BebasNeue-Regular.otf") format("opentype"),
+       url("css/fonts/some-font.svg#filename") format("svg");
+}
+
 header {
   background-color: #111;
   color: white;
