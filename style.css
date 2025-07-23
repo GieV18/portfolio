@@ -435,3 +435,11 @@ nav {
   background-color: #555;
   transform: scale(1.1);
 }
+
+
+
+footer a:hover svg,
+footer a:hover img {
+  transform: scale(1.15);
+  transition: transform 0.3s ease;
+}
